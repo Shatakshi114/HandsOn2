@@ -7,53 +7,104 @@ Date: 25th , Aug 2023
 ============================================================================
 */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<sys/types.h>
-#include<sys/socket.h>
-#include<netinet/in.h>
-#include<string.h>
+#define SOCKET_NAME "/tmp/resol.sock"
+#define BUFFER_SIZE 1024
 
-int main()
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/un.h>
+#include <unistd.h>
+
+int
+main(int argc, char *argv[])
 {
-    /*FILE * fp;char ch[5000];
-    fp=fopen("socket.txt","r");
-    fgets(ch,5000,fp);*/
+    struct sockaddr_un addr;
+    int down_flag = 0;
+    int ret;
+    int listen_socket;
+    int data_socket;
+    int result;
+    char buffer[BUFFER_SIZE];
 
-    char ch[1024];
+    /*
+     * In case the program exited inadvertently on the last run,
+     * remove the socket.
+     */
 
-    int server_socket;
-    server_socket=socket(AF_INET, SOCK_STREAM, 0);
-    //socket for server created
+    unlink(SOCKET_NAME);
 
-    struct sockaddr_in server_address;
-    server_address.sin_family=AF_INET;
-    server_address.sin_port=htons(9002);
-    server_address.sin_addr.s_addr=INADDR_ANY;
+    /* Create local socket. */
 
-    bind(server_socket, (struct sockaddr*)&server_address, sizeof(server_address));
-    //binding the server socket to the ports
+    listen_socket = socket(AF_UNIX, SOCK_STREAM, 0);
+    if (listen_socket == -1) {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
 
-    listen(server_socket,5);
-    //listen for client sockets
+    /*
+     * For portability clear the whole structure, since some
+     * implementations have additional (nonstandard) fields in
+     * the structure.
+     */
 
-    int client_socket;
-    client_socket=accept(server_socket,NULL, NULL);
-    //accepting a connection from client socket
+    memset(&addr, 0, sizeof(struct sockaddr_un));
 
-    while(1){
-        printf("Message: ");
-        gets(ch);
-        send(client_socket,ch,strlen(ch),0);
-        recv(client_socket,&ch,sizeof(ch),0);
-        printf("Message Received: %s ",ch);
+    /* Bind socket to socket name. */
+
+    addr.sun_family = AF_UNIX;
+    strncpy(addr.sun_path, SOCKET_NAME, sizeof(addr.sun_path) - 1);
+
+    ret = bind(listen_socket, (const struct sockaddr *) &addr,
+               sizeof(struct sockaddr_un));
+    if (ret == -1) {
+        perror("bind");
+        exit(EXIT_FAILURE);
+    }
+
+    ret = listen(listen_socket, 20);
+    if (ret == -1) {
+        perror("listen");
+        exit(EXIT_FAILURE);
+    }
+
+ 
+  
+        data_socket = accept(listen_socket, NULL, NULL);
+        if (data_socket == -1) {
+            perror("accept");
+            exit(EXIT_FAILURE);
         }
 
+        
+            ret = read(data_socket, buffer, BUFFER_SIZE);
+            if (ret == -1) {
+                perror("read");
+                exit(EXIT_FAILURE);
+            }
 
+        
+         printf("%s",buffer);
 
+        /*sprintf(buffer, "%d", result);*/
+        char buffer1[]="Hello this is server";
+        ret = write(data_socket, buffer1, strlen(buffer1));
 
-    //sending data to the connected client socket
+        if (ret == -1) {
+            perror("write");
+            exit(EXIT_FAILURE);
+        }
 
-    close(server_socket);
-    return 0;
+     
+
+        close(data_socket);
+
+   
+
+    close(listen_socket);
+
+  
 }
+
+

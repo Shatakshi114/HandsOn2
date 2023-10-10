@@ -1,8 +1,9 @@
 /*
 ============================================================================
-Name : 33c.c
+Name : 33b.c
 Author : Shatakshi Tiwari
-Description : Write a program to communicate between two machines using socket.(client side)
+Description : Write a program to create a shared memory.
+b. attach with O_RDONLY and check whether you are able to overwrite.
 Date: 25th , Aug 2023
 ============================================================================
 */
@@ -65,7 +66,7 @@ main(int argc, char *argv[])
         }
     
 
-
+   while(1){
 
     ret = read(data_socket, buf1, BUFFER_SIZE);
     if (ret == -1) {
@@ -73,8 +74,8 @@ main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
     printf("%s",buf1);
-    
-   
+    }
+    /* Close socket. */
 
     close(data_socket);
 
