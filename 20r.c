@@ -3,7 +3,7 @@
 Name : 20r.c
 Author : Shatakshi Tiwari
 Description : Write two programs so that both can communicate by FIFO -Use one way communication 
-Date: 
+Date: 8th Oct 2023 
 ============================================================================
 */
 

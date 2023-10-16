@@ -4,7 +4,7 @@ Name : 14.c
 Author : Shatakshi Tiwari
 Description : Write a simple program to create a pipe, write to the pipe, read from pipe and display on
 the monitor.
-Date: 25th , Aug 2023
+Date: 8th Oct 2023
 ============================================================================
 */
 
@@ -20,7 +20,7 @@ int main()
 	char buf[100];
 	if(pipe(filedes)==-1)
 	{
-		errExit("Pipe");
+		perror("Pipe");
 	}
 	write(filedes[1],"Hello ",6);
 	read(filedes[0],buf,6);

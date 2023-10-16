@@ -1,21 +1,22 @@
 /*
 ============================================================================
-Name : 33a.c
+Name : 30a.c
 Author : Shatakshi Tiwari
 Description : Write a program to create a shared memory.
 a. write some data to the shared memory
-Date: 25th , Aug 2023
+Date: 10th Oct 2023
 ============================================================================
 */
 
 
 #include<stdio.h>  
-    #include<stdlib.h>  
-    #include<unistd.h>  
-    #include<sys/shm.h>  
-    #include<string.h>  
-    int main()  
-    {  
+#include<stdlib.h>  
+#include<unistd.h>  
+#include<sys/shm.h>  
+#include<string.h>
+
+int main()  {
+
     int i;  
     void *shared_memory;  
     char buff[100];  
@@ -31,4 +32,5 @@ Date: 25th , Aug 2023
     read(0,buff,100); //get some input from user  
     strcpy(shared_memory,buff); //data written to shared memory  
     printf("You wrote : %s\n",(char *)shared_memory);
-    } 
+
+   } 

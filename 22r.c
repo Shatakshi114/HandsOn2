@@ -19,7 +19,7 @@ int fd;
 char buff[80];
 
 char arr[200];
-fd=open("myfifo",O_RDONLY);
+fd=open("myfifo22",O_RDONLY);
 if(fd==-1){
 perror("Error");
 exit(EXIT_FAILURE);
@@ -27,4 +27,5 @@ exit(EXIT_FAILURE);
 }
 read(fd,buff,sizeof(buff));
 printf("The text from fifo is:%s",buff);
-return 0;}
+return 0;
+}

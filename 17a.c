@@ -3,7 +3,7 @@
 Name : 17a.c
 Author : Shatakshi Tiwari
 Description : Write a program to execute ls -l | wc. use dup
-Date: 25th , Aug 2023
+Date: 8th Oct  2023
 ============================================================================
 */
 
@@ -31,3 +31,6 @@ int main()
                 execlp("wc", "wc", (char *)NULL);
         }
 }
+
+//output shows     <line count> <word count> <character count>
+

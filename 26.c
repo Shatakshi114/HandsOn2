@@ -3,57 +3,30 @@
 Name : 26.c
 Author : Shatakshi Tiwari
 Description : Write a program to send messages to the message queue. Check $ipcs -q
-Date: 25th , Aug 2023
+Date: 10th , Oct 2023
 ============================================================================
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <mqueue.h>
-
-#define QUEUE_NAME "/my_message_queue"
-#define MAX_MSG_SIZE 1024
-
-int main() {
-    mqd_t mq;
-    struct mq_attr attr;
-    char buffer[MAX_MSG_SIZE];
-
-    // Set up the message queue attributes
-    attr.mq_flags = 0;
-    attr.mq_maxmsg = 10;  // Maximum number of messages in the queue
-    attr.mq_msgsize = MAX_MSG_SIZE;
-    attr.mq_curmsgs = 0;
-
-    // Open or create the message queue
-    mq = mq_open(QUEUE_NAME, O_WRONLY | O_CREAT, 0666, &attr);
-    if (mq == (mqd_t)-1) {
-        perror("mq_open");
-        exit(1);
-    }
-
-    printf("Enter a message to send (Ctrl-D to exit):\n");
-
-    while (fgets(buffer, MAX_MSG_SIZE, stdin) != NULL) {
-        // Send the message to the message queue
-        if (mq_send(mq, buffer, strlen(buffer), 0) == -1) {
-            perror("mq_send");
-            exit(1);
-        }
-
-        printf("Message sent: %s\n", buffer);
-
-        printf("Enter a message to send (Ctrl-D to exit):\n");
-    }
-
-    // Close the message queue
-    if (mq_close(mq) == -1) {
-        perror("mq_close");
-        exit(1);
-    }
-
-    return 0;
+#include<string.h>
+#include<stdio.h>
+#include<sys/msg.h>
+#include<sys/ipc.h>
+#include<stdlib.h>
+struct msg {
+	long int m_type;
+	char message[80];
+} myq;
+int main(void){
+	key_t key;
+	size_t size;
+	int mqid;
+	key = ftok(".", 'a');
+        mqid = msgget(key, 0);
+        printf("Enter message type: ");
+	scanf("%ld", &myq.m_type);
+	printf("Enter message text:");
+	scanf(" %[^\n]", myq.message);
+	size = strlen(myq.message);
+	// size + 1 to accommodate terminating character
+	msgsnd(mqid, &myq, size + 1, 0);
 }

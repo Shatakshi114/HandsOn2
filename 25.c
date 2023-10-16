@@ -14,7 +14,7 @@ f. number of messages in the queue
 g. maximum number of bytes allowed
 h. pid of the msgsnd and msgrcv
 
-Date: 25th , Aug 2023
+Date: 10th , Oct 2023
 ============================================================================
 */
 

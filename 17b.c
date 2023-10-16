@@ -3,7 +3,7 @@
 Name : 17b.c
 Author : Shatakshi Tiwari
 Description : Write a program to execute ls -l | wc. USE dup2.
-Date: 25th , Aug 2023
+Date: 8th Oct 2023
 ============================================================================
 */
 

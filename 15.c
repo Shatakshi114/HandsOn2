@@ -3,7 +3,7 @@
 Name : 15.c
 Author : Shatakshi Tiwari
 Description : Write a simple program to send some data from parent to the child
-Date: 25th , Aug 2023
+Date: 8th Oct 2023
 ============================================================================
 */
 

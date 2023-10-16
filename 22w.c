@@ -17,8 +17,8 @@ Date: 6th October, 2023.
 int main()
 {
 int fd;
-char * myfifo="myfifo";
-mkfifo(myfifo,0666);
+char * myfifo22="myfifo22";
+mkfifo(myfifo22,0666);
 char arr[200];
 fd_set rfds;
 	struct timeval tv;
@@ -32,16 +32,13 @@ fd_set rfds;
 	if(retval==-1) perror("ERROR Occurred");
 	else if(retval) {
 	//printf("Data is available for reading within 10 seconds\n");
-	
 
-
-while(1){
-fd=open(myfifo,O_WRONLY);
-printf("Write the message:");
+printf("write the message");
+fd=open(myfifo22,O_WRONLY);
 scanf("%[^\t\n]s",arr);
 write(fd,arr,strlen(arr)+1);
 close(fd);
-}}
+}
 else printf("Data is not available for reading within 10 seconds\n");
 return 0;
 }

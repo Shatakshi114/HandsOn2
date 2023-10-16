@@ -4,7 +4,7 @@ Name : 27a.c
 Author : Shatakshi Tiwari
 Description : Write a program to receive messages from the message queue.
 a. with 0 as a flag
-Date: 25th , Aug 2023
+Date: 10th Oct 2023
 ============================================================================
 */
 
@@ -23,7 +23,8 @@ int main(void){
         mqid = msgget(key, 0);
         printf("Enter message type: ");
         scanf("%ld", &myq.m_type);
-        int rec = msgrcv(mqid, &myq, sizeof(myq.message), myq.m_type,0|MSG_NOERROR);
+        int rec = msgrcv(mqid, &myq, sizeof(myq.message), myq.m_type, 0);
+
         if (rec == -1)
    		exit(-1);
 	printf("Message: %s\n", myq.message);
