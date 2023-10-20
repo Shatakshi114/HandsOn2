@@ -1,3 +1,13 @@
+/*
+============================================================================
+Name : 34ac.c
+Author : Shatakshi Tiwari
+Description : Write a program to create a concurrent server.
+a. use fork
+Date: 18th Oct 2023
+============================================================================
+*/
+
 #include<stdio.h>
 #include<sys/types.h>//socket
 #include<sys/socket.h>//socket

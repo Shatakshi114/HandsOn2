@@ -4,7 +4,7 @@ Name : 27b.c
 Author : Shatakshi Tiwari
 Description : Write a program to receive messages from the message queue.
 b. with IPC_NOWAIT as a flag
-Date: 25th , Aug 2023
+Date: 11th Oct  2023
 ============================================================================
 */
 

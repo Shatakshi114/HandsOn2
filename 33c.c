@@ -3,7 +3,7 @@
 Name : 33c.c
 Author : Shatakshi Tiwari
 Description : Write a program to communicate between two machines using socket.(client side)
-Date: 25th , Aug 2023
+Date: 17th Oct 2023
 ============================================================================
 */
 

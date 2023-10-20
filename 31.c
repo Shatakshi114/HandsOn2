@@ -4,7 +4,7 @@ Name : 31.c
 Author : Shatakshi Tiwari
 Description : Write a program to create a semaphore and initialize value to the semaphore.
 a. create a binary semaphore
-Date: 25th , Aug 2023
+Date: 12th , OCT  2023
 ============================================================================
 */
 

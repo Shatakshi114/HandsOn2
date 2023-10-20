@@ -1,10 +1,10 @@
 /*
 ============================================================================
-Name : 33c.c
+Name : 30c.c
 Author : Shatakshi Tiwari
 Description : Write a program to create a shared memory.
 c. detach the shared memory
-Date: 25th , Aug 2023
+Date: 10th Oct  2023
 ============================================================================
 */
 

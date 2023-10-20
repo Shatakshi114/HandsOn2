@@ -3,7 +3,7 @@
 Name : 29.c
 Author : Shatakshi Tiwari
 Description : Write a program to remove a message queue .
-Date: 25th , Aug 2023
+Date: 12th Oct 2023
 ============================================================================
 */
 

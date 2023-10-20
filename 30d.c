@@ -1,10 +1,10 @@
 /*
 ============================================================================
-Name : 33d.c
+Name : 30d.c
 Author : Shatakshi Tiwari
 Description : Write a program to create a shared memory.
 d. remove the shared memory
-Date: 25th , Aug 2023
+Date: 10th Oct 2023
 ============================================================================
 */
 

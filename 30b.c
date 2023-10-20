@@ -1,6 +1,6 @@
 /*
 ============================================================================
-Name : 33b.c
+Name : 30b.c
 Author : Shatakshi Tiwari
 Description : Write a program to create a shared memory.
 b. attach with O_RDONLY and check whether you are able to overwrite.

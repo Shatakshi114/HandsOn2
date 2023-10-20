@@ -4,7 +4,7 @@ Name : 31b.c
 Author : Shatakshi Tiwari
 Description : Write a program to create a semaphore and initialize value to the semaphore.
 b. create a counting semaphore
-Date: 25th , Aug 2023
+Date: 14th , Oct 2023
 ============================================================================
 */
 

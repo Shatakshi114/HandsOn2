@@ -1,3 +1,13 @@
+/*
+============================================================================
+Name : 34bc.c
+Author : Shatakshi Tiwari
+Description : Write a program to create a concurrent server.
+b. use pthread_create
+Date: 18th , Oct 2023
+============================================================================
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
