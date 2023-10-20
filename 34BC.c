@@ -1,13 +1,3 @@
-/*
-============================================================================
-Name : 14.c
-Author : Shatakshi Tiwari
-Description : Write a simple program to create a pipe, write to the pipe, read from pipe and display on
-the monitor.
-Date: 25th , Aug 2023
-============================================================================
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,17 +5,17 @@ Date: 25th , Aug 2023
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
-
+#include <fcntl.h>
 #define PORT 8080
 
 int main() {
     int sock = 0;
     struct sockaddr_in server;
-    char *hello = "Hello from client";
+    char *hello = "\n Hello from client\n\n";
     char buffer[1024] = {0};
 
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-        perror("Socket creation error");
+        perror("\nSocket creation error\n");
         exit(EXIT_FAILURE);
     }
 
@@ -43,7 +33,7 @@ int main() {
     }
 
     send(sock, hello, strlen(hello), 0);
-    printf("Hello message sent\n");
+    printf("\nHello message sent to the server\n");
     read(sock, buffer, 1024);
     printf("Server: %s\n", buffer);
     return 0;

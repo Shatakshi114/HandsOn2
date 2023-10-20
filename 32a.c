@@ -4,7 +4,7 @@ Name : 32a.c
 Author : Shatakshi Tiwari
 Description : Write a program to implement semaphore to protect any critical section.
 a. rewrite the ticket number creation program using semaphore
-Date: 25th , Aug 2023
+Date: 10th , Oct 2023
 ============================================================================
 */
 
